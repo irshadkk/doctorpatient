@@ -1,0 +1,9 @@
+CREATE TABLE appointments
+(
+    id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    patient_name varchar(500) NOT NULL,
+    appointment_date datetime NOT NULL
+);
+CREATE UNIQUE INDEX appointments_id_uindex ON appointments (id);
+insert into doctorpatient.appointments (patient_name, appointment_date) values ('irshad','2018-08-10 03:11:44')
+select * from appointments
