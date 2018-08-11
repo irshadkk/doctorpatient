@@ -21,9 +21,11 @@ import { FlatList, TouchableHighlight, Modal, View, TouchableOpacity } from "rea
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import Moment from 'moment';
-import Spinner from 'react-native-loading-spinner-overlay';
+import Spinner from 'react-native-loading-spinner-overlay'; 
 
 import styles from "./styles";
+
+
 
 class Appointments extends Component {
   constructor() {
@@ -38,25 +40,27 @@ class Appointments extends Component {
       data: [],
       stickyHeaderIndices: [],
       searchName: '',
-      searchMobileNumber: ''
-    };
-    this.fetchAppointment();
+      searchMobileNumber: '' 
+    }; 
   }
+   
+
+const 
 
   fetchAppointment() {
-    // this.setState({ isLoading: true });
+    this.setState({ isLoading: true });
     fetch('http://103.227.177.38:8888/app/allappointments?name=all')
       .then((response) => response.json())
       .then((responseJson) => {
         if (!this.isCancelled) {
           this.setState({ data: responseJson });
-          // this.setState({ isLoading: false });
+          this.setState({ isLoading: false });
         }
 
       })
       .catch((error) => {
         if (!this.isCancelled) {
-          // this.setState({ isLoading: false });
+          this.setState({ isLoading: false });
         }
         console.error(error);
       });
@@ -201,6 +205,9 @@ class Appointments extends Component {
   componentWillUnmount() {
     this.isCancelled = true;
   }
+  componentDidMount() {
+    this.fetchAppointment();
+  }
   renderItem = ({ item }) => {
     return (
       <ListItem iconRight>
@@ -315,6 +322,8 @@ class Appointments extends Component {
 
         <Content padder>
           <Spinner visible={this.state.isLoading} textContent={"Loading..."} textStyle={{ color: 'red' }} />
+          
+
           <FlatList
             data={this.state.data}
             renderItem={this.renderItem}

@@ -11,7 +11,7 @@ import {
   Right,
   Badge
 } from "native-base";
-import styles from "./style";
+import styles from "./style";  
 
 const drawerCover = require("../../../assets/drawer-cover.png");
 const drawerImage = require("../../../assets/logo-kitchen-sink.png");
@@ -28,6 +28,13 @@ const datas = [
     icon: "calendar",
     bg: "#DA4437"
   },
+  {
+    name: "Calender",
+    route: "AppointmentCalender",
+    icon: "calendar",
+    bg: "#DA4437"
+  },
+  
   // {
   //   name: "Search Appointments",
   //   route: "Appointments",

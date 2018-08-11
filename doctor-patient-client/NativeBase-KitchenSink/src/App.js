@@ -4,6 +4,7 @@ import { StackNavigator, DrawerNavigator } from "react-navigation";
 
 import Appointments from "./screens/appointments/";
 import AppointmentsToday from "./screens/appointmentstoday/";
+import AppointmentCalender from "./screens/appointmentcalender/";
 import Header from "./screens/Header/";
 import Header1 from "./screens/Header/1";
 import Header2 from "./screens/Header/2";
@@ -141,9 +142,10 @@ import NHDatePicker from "./screens/datepicker/";
 
 const Drawer = DrawerNavigator(
   {
-    Home: { screen: Home },
+    Home: { screen: Home }, 
     Appointments: { screen: Appointments },
     AppointmentsToday: { screen: AppointmentsToday },
+    AppointmentCalender: { screen: AppointmentCalender },
     Anatomy: { screen: Anatomy },
     Header: { screen: Header },
     Footer: { screen: Footer },

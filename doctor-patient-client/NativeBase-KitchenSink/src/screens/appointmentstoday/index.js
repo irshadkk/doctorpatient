@@ -39,8 +39,7 @@ class AppointmentsToday extends Component {
       stickyHeaderIndices: [],
       searchName: '',
       searchMobileNumber: ''
-    };
-    this.fetchAppointment();
+    }; 
   }
 
   fetchAppointment() {
@@ -49,19 +48,19 @@ class AppointmentsToday extends Component {
     var end = new Date();
     end.setHours(23, 59, 59, 999);
 
-    // this.setState({ isLoading: true });
+    this.setState({ isLoading: true });
     fetch('http://103.227.177.38:8888/app/allappointments?startDate=' + start.getTime() + '&endDate=' + end.getTime())
       .then((response) => response.json())
       .then((responseJson) => {
         if (!this.isCancelled) {
           this.setState({ data: responseJson });
-          // this.setState({ isLoading: false });
-        }
+          this.setState({ isLoading: false });
+        }  
 
       })
       .catch((error) => {
         if (!this.isCancelled) {
-          // this.setState({ isLoading: false });
+          this.setState({ isLoading: false });
         }
         console.error(error);
       });
@@ -79,7 +78,7 @@ class AppointmentsToday extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(obj),
-
+ 
     })
       .then((response) => response.json())
       .then((responseJson) => {
@@ -205,6 +204,9 @@ class AppointmentsToday extends Component {
   }
   componentWillUnmount() {
     this.isCancelled = true;
+  }
+  componentDidMount() {
+    this.fetchAppointment();
   }
   renderItem = ({ item }) => {
     return (
